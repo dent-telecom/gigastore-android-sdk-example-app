@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_m">
+
+            <TextView
+                android:id="@+id/text_view_esim_capability_title"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/esim_capability_title"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+
+            <TextView
+                android:id="@+id/text_view_esim_capability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="esim capable"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:layout_marginTop="@dimen/margin_m"/>
+            
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_l"/>
+
+            <TextView
+                android:id="@+id/text_view_user_token_title"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/margin_l"
+                android:text="@string/user_token_title"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+
+            <TextView
+                android:id="@+id/text_view_user_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_m"
+                android:text="@string/label_user_token"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+            <EditText
+                android:id="@+id/edit_text_user_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_user_token"/>
+
+            <Button
+                android:id="@+id/button_set_user_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_s"
+                android:text="@string/button_set_user_token" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_l"/>
+
+            <TextView
+                android:id="@+id/text_view_load_profiles_title"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/load_profiles_title"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+
+                android:layout_marginTop="@dimen/margin_l"/>
+
+            <Button
+                android:id="@+id/text_view_load_all_profiles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_m"
+                android:gravity="center"
+                android:text="@string/button_load_all_profiles" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_l"/>
+
+            <TextView
+                android:id="@+id/text_view_activate_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activate_item_title"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                android:layout_marginTop="@dimen/margin_l" />
+
+            <TextView
+                android:id="@+id/text_view_inventory_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_m"
+                android:text="@string/label_inventory_item"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+            <EditText
+                android:id="@+id/edit_text_inventory_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_view_meta_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_m"
+                android:text="@string/label_meta_tag"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+            <EditText
+                android:id="@+id/edit_text_meta_tag"
+                android:layout_width="match_parent"
+
+                android:text="@string/default_meta_tag"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button_activate_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_s"
+                android:text="@string/button_activate_item" />
+
+            <TextView
+                android:id="@+id/text_view_version_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_l"
+                android:gravity="center"
+                android:text="@string/version_template" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/main_fragment_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/loading_warning_text" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

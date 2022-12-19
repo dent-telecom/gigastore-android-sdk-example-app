@@ -1,0 +1,94 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk 32
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.dentwireless.gigastore.app.example"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions "serverTier"
+    productFlavors {
+        all {
+            ext.flavorName = null
+        }
+
+        production {
+            dimension "serverTier"
+            flavorName = "production"
+            matchingFallbacks = ["production"]
+        }
+    }
+
+    buildTypes {
+        all {
+            productFlavors.all {
+                def serverTierPropertiesPath = "${propertiesFileDirectory}/${flavorName}.prop"
+                apply from: serverTierPropertiesPath
+
+                def appPrefix = "GigastoreLib"
+                if (flavorName == "production") {
+                    applicationIdSuffix ""
+                } else {
+                    applicationIdSuffix ".${flavorName}"
+                }
+
+                def appName = "$appPrefix$applicationIdSuffix"
+                resValue("string", "app_name", appName)
+            }
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$kotlin_core_version"
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // for github-android-sdk
+    //def groupId = "com.github.telcoequity:gigastore-android-sdk-dev"
+
+    //for github-android-sdk-dev
+    def groupId = "com.github.dent-jitpack:gigastore-android-sdk"
+    def libraryVersion = "1.0.1"
+
+    productionImplementation ( "${groupId}:${libraryVersion}") {
+        transitive=true
+    }
+}

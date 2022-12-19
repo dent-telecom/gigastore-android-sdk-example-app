@@ -1,0 +1,3 @@
+ext {
+    serverUrlString = "https://dromedaryapi.io/api/"
+}

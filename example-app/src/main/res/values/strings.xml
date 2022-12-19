@@ -1,0 +1,32 @@
+<resources>
+    <string name="esim_capability_title">eSIM Capability</string>
+    <string name="esim_capability_template">eSIM capable: %s</string>
+    <string name="user_token_title">Custom User Token</string>
+    <string name="label_user_token">User token</string>
+    <string name="button_set_user_token">Set user token</string>
+    <string name="label_inventory_item">Inventory item</string>
+    <string name="label_meta_tag">Meta tag</string>
+    <string name="activate_item_title">Activate an item</string>
+    <string name="button_activate_item">Activate item</string>
+    <string name="button_install_profile">Install profile</string>
+    <string name="load_profiles_title">Load Profiles Connected To Device</string>
+    <string name="button_load_all_profiles">Load profiles</string>
+    <string name="version_template">Version: %s</string>
+    <string name="default_user_token">foo_token</string>
+    <string name="default_meta_tag">foo_tag</string>
+    <string name="no_profiles_placeholder">No profiles found</string>
+    <string name="all_profiles_fragment_name">All profiles</string>
+    <string name="message_loading">Loading</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="item_activated_successfully">Item activated successfully</string>
+    <string name="profile_installed_successfully">Profile installed successfully</string>
+    <string name="label_sdk_key">SDK key</string>
+    <string name="button_set_sdk_key">Set SDK Key</string>
+    <string name="label_device_id">Device ID</string>
+    <string name="button_set_device_id">Set device ID</string>
+    <string name="loading_warning_text">Loading. Please don\'t close the app, and don\'t switch to other apps while your action is performing...</string>
+    <string name="profile_row_id">ID: </string>
+    <string name="profile_row_imsi">IMSI: </string>
+    <string name="profile_row_iccid">ICCID: </string>
+    <string name="profile_row_state">State: </string>
+</resources>

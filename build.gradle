@@ -1,0 +1,85 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+
+    ext {
+        kotlin_version = "1.6.21"
+        kotlin_core_version = "1.8.0"
+        propertiesFileDirectory = "../properties/"
+        buildNumber = -1
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.1.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0"
+
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.6.0"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+private Integer retrieveBuildNumber() {
+    def commandLineBuildNumber = project.findProperty("BuildNumber")
+    if (commandLineBuildNumber != null) {
+        return commandLineBuildNumber as Integer
+    }
+
+    def bitriseBuildNumber = System.getenv("BITRISE_BUILD_NUMBER")
+    if (bitriseBuildNumber != null) {
+        return bitriseBuildNumber as Integer
+    }
+
+    return null
+}
+
+task buildApkOrBundle {
+    def assembleOrBundleTask
+    def apkOrBundle = project.findProperty("Output") ?: "apk"
+    def buildPhaseRaw = project.findProperty("BuildPhase") ?: "Debug"
+    def appTypeRaw = project.findProperty("AppType") ?: "Production"
+
+    def buildPhase = buildPhaseRaw.toString().capitalize()
+    def appType = appTypeRaw.toString().capitalize()
+
+    Integer versionCode = retrieveBuildNumber()
+    if (versionCode != null) {
+        configVersionCode = versionCode
+        buildNumber = versionCode
+    }
+
+    println("Params: apkOrBundle: $apkOrBundle | buildPhase: $buildPhase | appType: $appType")
+
+    def baseTask
+    if (apkOrBundle == "apk") baseTask = "assemble"
+    else if (apkOrBundle == "bundle") baseTask = "bundle"
+    else baseTask = ""
+
+    def executeString = ":app:$baseTask$appType" + "Debug"
+    if(buildPhase == "Release"){
+        executeString = ":app:$baseTask$appType" + "Release"
+    }
+
+    println("Execute string: $executeString")
+
+    finalizedBy(executeString)
+}
