@@ -5,21 +5,20 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 34
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.dentwireless.gigastore.app.example"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    flavorDimensions "serverTier"
-    productFlavors {
+    flavorDimensions "serverTier"    productFlavors {
         all {
             ext.flavorName = null
         }
@@ -86,7 +85,7 @@ dependencies {
 
     //for github-android-sdk-dev
     def groupId = "com.github.dent-jitpack:gigastore-android-sdk"
-    def libraryVersion = "1.0.1"
+    def libraryVersion = "1.0.2"
 
     productionImplementation ( "${groupId}:${libraryVersion}") {
         transitive=true
