@@ -18,7 +18,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    flavorDimensions "serverTier"    productFlavors {
+    flavorDimensions "serverTier"
+    productFlavors {
         all {
             ext.flavorName = null
         }
