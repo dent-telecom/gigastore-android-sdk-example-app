@@ -26,6 +26,7 @@ class MainFragment : BaseFragment() {
     private var binding: FragmentMainBinding? = null
 
     private var itemValue: String = ""
+    private var profileUID: String = ""
     private var metatagValue: String = "foo_tag"
     private var userTokenValue: String = "foo_token"
 
@@ -39,6 +40,12 @@ class MainFragment : BaseFragment() {
 
     private val setUserTokenButton: Button?
         get() = binding?.buttonSetUserToken
+
+    private val profileUIDTextField: EditText?
+        get() = binding?.editTextProfileUid
+
+    private val loadProfileButton: Button?
+        get() = binding?.buttonLoadProfile
 
     private val inventoryItemEditText: EditText?
         get() = binding?.editTextInventoryItem
@@ -97,6 +104,7 @@ class MainFragment : BaseFragment() {
     private fun setupViews() {
         setupEsimCapabilityView()
         setupUserTokenViews()
+        setupGetProfileViews()
 
         setupInventoryItemEditText()
         setupMetaTagEditText()
@@ -120,6 +128,34 @@ class MainFragment : BaseFragment() {
         setUserTokenButton?.setOnClickListener {
             val userToken = userTokenEditText?.text?.toString() ?: ""
             Gigastore.setUserToken(userToken)
+        }
+    }
+
+    private fun setupGetProfileViews() {
+        profileUIDTextField?.setText(profileUID)
+        loadProfileButton?.setOnClickListener {
+            val profileUid = profileUIDTextField?.text?.toString() ?: ""
+            val currentContext = context ?: return@setOnClickListener
+
+            loading = true
+
+            Gigastore.getProfile(profileUid, currentContext)  { profile, error ->
+                loading = false
+
+                if (profile != null) {
+                    this.profile = profile
+                    Toast.makeText(
+                        currentContext,
+                        R.string.profile_loaded_successfully,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                if (error != null) {
+                    activeError = error
+                }
+            }
+
         }
     }
 

@@ -11,6 +11,7 @@
     <string name="button_install_profile">Install profile</string>
     <string name="load_profiles_title">Load Profiles Connected To Device</string>
     <string name="button_load_all_profiles">Load profiles</string>
+    <string name="button_load_profile">Load profile</string>
     <string name="version_template">Version: %s</string>
     <string name="default_user_token">foo_token</string>
     <string name="default_meta_tag">foo_tag</string>
@@ -19,6 +20,7 @@
     <string name="message_loading">Loading</string>
     <string name="button_cancel">Cancel</string>
     <string name="item_activated_successfully">Item activated successfully</string>
+    <string name="profile_loaded_successfully">Profile loaded successfully</string>
     <string name="profile_installed_successfully">Profile installed successfully</string>
     <string name="label_sdk_key">SDK key</string>
     <string name="button_set_sdk_key">Set SDK Key</string>
@@ -29,4 +31,6 @@
     <string name="profile_row_imsi">IMSI: </string>
     <string name="profile_row_iccid">ICCID: </string>
     <string name="profile_row_state">State: </string>
+    <string name="get_profile_title">Get Profile</string>
+    <string name="label_profile_uid">Profile UID</string>
 </resources>

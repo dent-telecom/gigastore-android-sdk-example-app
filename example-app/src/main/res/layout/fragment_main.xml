@@ -36,6 +36,28 @@
                 android:layout_marginTop="@dimen/margin_l"/>
 
             <TextView
+                android:id="@+id/text_view_user_token_title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_l"
+                android:text="@string/get_profile_title"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+
+            <EditText
+                android:id="@+id/edit_text_profile_uid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_profile_uid" />
+
+            <Button
+                android:id="@+id/button_load_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_m"
+                android:gravity="center"
+                android:text="@string/button_load_profile" />
+
+            <TextView
                 android:id="@+id/text_view_user_token_title"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
