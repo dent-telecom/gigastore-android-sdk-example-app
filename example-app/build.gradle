@@ -86,7 +86,7 @@ dependencies {
 
     //for github-android-sdk-dev
     def groupId = "com.github.dent-jitpack:gigastore-android-sdk"
-    def libraryVersion = "1.0.2"
+    def libraryVersion = "1.1.0"
 
     productionImplementation ( "${groupId}:${libraryVersion}") {
         transitive=true
