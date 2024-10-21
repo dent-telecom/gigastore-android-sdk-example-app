@@ -1,7 +1,6 @@
 package com.dentwireless.gigastore_example_app.ui
 
 import android.os.Bundle
-import com.dentwireless.gigastore_example_app.R
 
 class MainActivity : BaseActivity() {
 
@@ -30,6 +29,11 @@ class MainActivity : BaseActivity() {
         fragment.openAllItemsFragmentCompletion = {
             val allProfilesFragment = AllProfilesFragment()
             showFragment(allProfilesFragment)
+        }
+
+        fragment.openProfileDetailFragmentCompletion = { profile ->
+            val profileDetailFragment = ProfileDetailFragment.newInstance(profile)
+            showFragment(profileDetailFragment)
         }
 
         showFragment(fragment)

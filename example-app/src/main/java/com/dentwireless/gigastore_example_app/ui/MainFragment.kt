@@ -16,12 +16,15 @@ import com.dentwireless.Gigastore
 import com.dentwireless.gigastore_sdk.models.GigastoreESIMProfile
 
 typealias OpenAllItemsCompletion = () -> Unit
+typealias ProfileDetailCompletion = (GigastoreESIMProfile) -> Unit
 
 class MainFragment : BaseFragment() {
 
     // region Properties
 
     var openAllItemsFragmentCompletion: OpenAllItemsCompletion? = null
+    var openProfileDetailFragmentCompletion: ProfileDetailCompletion? = null
+
 
     private var binding: FragmentMainBinding? = null
 
@@ -149,6 +152,8 @@ class MainFragment : BaseFragment() {
                         R.string.profile_loaded_successfully,
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    openProfileDetailFragmentCompletion?.invoke(profile)
                 }
 
                 if (error != null) {
