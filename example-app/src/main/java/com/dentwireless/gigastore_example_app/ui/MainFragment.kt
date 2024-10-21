@@ -16,14 +16,16 @@ import com.dentwireless.Gigastore
 import com.dentwireless.gigastore_sdk.models.GigastoreESIMProfile
 
 typealias OpenAllItemsCompletion = () -> Unit
-typealias ProfileDetailCompletion = (GigastoreESIMProfile) -> Unit
+typealias OpenProfileDetailCompletion = (GigastoreESIMProfile) -> Unit
+typealias CloseProfileDetailCompletion = () -> Unit
 
 class MainFragment : BaseFragment() {
 
     // region Properties
 
     var openAllItemsFragmentCompletion: OpenAllItemsCompletion? = null
-    var openProfileDetailFragmentCompletion: ProfileDetailCompletion? = null
+    var openProfileDetailFragmentCompletion: OpenProfileDetailCompletion? = null
+    var closeProfileDetailFragmentCompletion: CloseProfileDetailCompletion? = null
 
 
     private var binding: FragmentMainBinding? = null

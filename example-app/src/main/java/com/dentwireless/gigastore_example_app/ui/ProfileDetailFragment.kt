@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.dentwireless.Gigastore
@@ -17,15 +16,17 @@ import com.dentwireless.gigastore_sdk.models.GigastoreESIMProfile
 class ProfileDetailFragment : BaseFragment() {
 
     companion object {
-        fun newInstance(esimProfile: GigastoreESIMProfile): ProfileDetailFragment {
+        fun newInstance(esimProfile: GigastoreESIMProfile, closeDetails: CloseProfileDetailCompletion): ProfileDetailFragment {
             return ProfileDetailFragment().apply {
                 this.esimProfile = esimProfile
+                this.closeDetails = closeDetails
             }
         }
     }
 
     // region Properties
 
+    private var closeDetails: CloseProfileDetailCompletion? = null
     private var esimProfile: GigastoreESIMProfile? = null
 
     private var binding: FragmentProfileDetailBinding? = null
@@ -104,6 +105,8 @@ class ProfileDetailFragment : BaseFragment() {
                     R.string.profile_installed_successfully,
                     Toast.LENGTH_SHORT
                 ).show()
+
+                closeDetails?.invoke()
             }
 
             if (installationError != null) {

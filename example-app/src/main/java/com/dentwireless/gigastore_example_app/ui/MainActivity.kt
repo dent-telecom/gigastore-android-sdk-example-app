@@ -32,7 +32,13 @@ class MainActivity : BaseActivity() {
         }
 
         fragment.openProfileDetailFragmentCompletion = { profile ->
-            val profileDetailFragment = ProfileDetailFragment.newInstance(profile)
+            val profileDetailFragment = ProfileDetailFragment.newInstance(
+                esimProfile = profile,
+                object : CloseProfileDetailCompletion {
+                    override fun invoke() {
+                        supportFragmentManager.popBackStack()
+                    }
+                })
             showFragment(profileDetailFragment)
         }
 
