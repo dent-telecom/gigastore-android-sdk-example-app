@@ -33,6 +33,9 @@ class EsimProfileView : ConstraintLayout {
     val imsiTextView: TextView
         get() = binding.profileImsiTextView
 
+    val iccidTextView: TextView
+        get() = binding.profileIccidTextView
+
     val stateTextView: TextView
         get() = binding.profileStateTextView
 
@@ -66,6 +69,7 @@ class EsimProfileView : ConstraintLayout {
     fun setupWithEsimProfile(profile: GigastoreESIMProfile?, listener: Listener?) {
         profileIdTextView.text = profile?.id
         imsiTextView.text = profile?.imsi
+        iccidTextView.text = profile?.iccid
         stateTextView.text = profile?.state?.rawValue ?: "Unknown"
 
         installButton.setOnClickListener {
