@@ -16,6 +16,7 @@ import com.dentwireless.gigastore_example_app.R
 import com.dentwireless.gigastore_example_app.ui.adapter.EsimProfileView
 import com.dentwireless.gigastore_sdk.models.GigastoreESIMProfile
 
+@Deprecated("Used Gigastore SDK function will be removed in the future, do not use anymore")
 class AllProfilesFragment : BaseFragment() {
 
     // region Properties
